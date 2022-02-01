@@ -24,7 +24,7 @@ def validate_input_data(submitted_product):
     return messages
 
 # 2 - Avoid else if (if-branching)
-def get_item_price_range(price):
+def get_item_price_range_branching(price):
     if price == 0:
         return 'zero'
     else:
