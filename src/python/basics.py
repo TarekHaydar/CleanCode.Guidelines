@@ -1,49 +1,48 @@
-# talk about try catch
-# Guard Clauses
-def calculate_discount(product):
+# 1 - the difference betweeen Guard Clauses and Input Validations
+
+def guard_clauses(product):
     if product is None:
         raise Exception("product cannot be null")
+
+    if product.quantity <= 0:
+        raise Exception("quantity cannot be negative")
         
     # some statements to calculate discount
 
-def validate_input_data(product):
-    if product is None:
+def validate_input_data(submitted_product):
+    if submitted_product is None:
         return ["product cannot be null"]
     
     messages = []
-    if product.quantity <= 0:
+
+    if submitted_product.quantity <= 0:
         messages.append("quantity cannot be negative")
     
-    if product.price <= 10:
-        messages.appen("price is very low")
+    if submitted_product.price <= 0:
+        messages.append("price cannot be negative")
     
-    return messages;
+    return messages
 
-#avoid else if
-def print_a(a):
-    if a == 0:
-        print('zero')
+# 2 - Avoid else if (if-branching)
+def get_item_price_range(price):
+    if price == 0:
+        return 'zero'
     else:
-        if a > 0 and a <= 20:
-            print('20 max')
-        elif a >= 21:
-            print('21 min')
+        if price > 0 and price <= 20:
+            return '20 max'
+        elif price >= 21:
+            return '21 min'
         else:
-            print('negative')
+            return 'negative'
         
-def print_a_second(a):
-    if a == 0:
-        print('zero')
-        return
+def get_item_price_range(price):
+    if price == 0:
+        return 'zero'
     
-    if a > 0 and a <= 20:
-        print('between 1 and 20')
-        return
+    if price > 0 and price <= 20:
+        return 'between 1 and 20'
     
-    if a >= 21:
-        print('greater than 20')
-        return
+    if price >= 21:
+        return 'greater than 20'
     
-    print('negative')
-    
-print_a_second(21)
+    return('negative')
