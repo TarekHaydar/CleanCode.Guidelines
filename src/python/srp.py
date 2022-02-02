@@ -24,19 +24,27 @@ def get_total_invoice(invoice_id):
 
     return sum
 
-# Class to handle accessing the database
+# Class to create db connection
 
 
-class InvoiceDB():
-    def __init__(self):
-        mydb = mysql.connector.connect(
+class DatabaseConnection():
+    def build_connection():
+        return mysql.connector.connect(
             host="localhost",
             user="myusername",
             password="mypassword",
             database="mydatabase")
 
+
+# Class to handle accessing the database
+
+
+class InvoiceStorage():
+    def __init__(self):
+        self.db_connection = DatabaseConnection()
+
     def get_invoice_details(self, invoice_id):
-        mycursor = mydb.cursor()
+        mycursor = self.db_connection.cursor()
 
         mycursor.execute(
             F"SELECT * FROM invoice_details WHERE Invoice_Id = {invoice_id}")
@@ -49,7 +57,7 @@ class InvoiceDB():
 class Invoice:
     def __init__(self, number):
         self.number = number
-        self.db = InvoiceDB()
+        self.db = InvoiceStorage()
 
     def get_total_invoice(self):
         invoice_details = self.db.get_invoice_details(self.number)
