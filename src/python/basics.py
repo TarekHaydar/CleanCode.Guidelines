@@ -46,3 +46,6 @@ def get_item_price_range(price):
         return 'greater than 20'
     
     return('negative')
+
+# 3 - Talk about global handeling exception and try catch
+# 4 - nullable values in database
