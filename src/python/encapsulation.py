@@ -38,10 +38,11 @@ class AccountBank:
     def get_available_amount_to_withdraw(self):
         if self.type == 'SilverCard':
             return self.balance - 20
-        elif self.type == 'GoldenCard':
+        
+        if self.type == 'GoldenCard':
             return self.balance - 10
-        else:
-            return self.balance
+        
+        return self.balance
 
 
 my_account = AccountBank(1000, 'Active', 'GoldenCard')
