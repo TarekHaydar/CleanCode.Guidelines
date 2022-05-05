@@ -27,13 +27,12 @@ def validate_input_data(submitted_product):
 def get_item_price_range_branching(price):
     if price == 0:
         return 'zero'
+    elif price > 0 and price <= 20:
+        return '20 max'
+    elif price >= 21:
+        return '21 min'
     else:
-        if price > 0 and price <= 20:
-            return '20 max'
-        elif price >= 21:
-            return '21 min'
-        else:
-            return 'negative'
+        return 'negative'
         
 def get_item_price_range(price):
     if price == 0:
