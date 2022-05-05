@@ -11,7 +11,7 @@ class Invoice:
 invoice = Invoice("Inv0001", 10, 2000, 1000)
 
 # here we have complex if conditions
-# sometimes it might be more complicated
+# it might be more complicated
 if 1 <= invoice.lines_count <= 10 and 1000 <= invoice.total <= 2000 and 500 <= invoice.balance <= 1000:
     print(invoice.total * 0.01)
 elif invoice.lines_count > 10 and invoice.balance > 1000:
